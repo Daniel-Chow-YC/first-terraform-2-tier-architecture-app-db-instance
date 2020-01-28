@@ -16,3 +16,4 @@ In our stack we have:
 - terraform plan
 - terraform refresh
 - terraform apply
+- terraform destroy
