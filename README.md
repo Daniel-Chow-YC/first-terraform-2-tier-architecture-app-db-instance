@@ -10,3 +10,9 @@ In our stack we have:
 - Chef - configuration management
 - Packer - creates immutable images of our machines
 - Terraform - is the orchestration tool that will setup the infrastructure in the cloud  
+
+# Commands
+- terraform init
+- terraform plan
+- terraform refresh
+- terraform apply
