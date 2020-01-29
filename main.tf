@@ -23,6 +23,18 @@ resource "aws_internet_gateway" "app_gw" {
 }
 
 
+
+# create subnet for app
+resource "aws_subnet" "app_subnet" {
+  vpc_id            = aws_vpc.app_vpc.id
+  cidr_block        = "10.0.0.0/24"
+  availability_zone = "eu-west-1a"
+  tags = {
+   Name = var.name
+  }
+}
+
+
 # Route table
 resource "aws_route_table" "app_route" {
   vpc_id = aws_vpc.app_vpc.id
@@ -45,15 +57,6 @@ resource "aws_route_table_association" "app_assoc" {
 }
 
 
-# create a subnet
-resource "aws_subnet" "app_subnet" {
-  vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = "10.0.0.0/24"
-  availability_zone = "eu-west-1a"
-  tags = {
-   Name = var.name
-  }
-}
 
 
 # Create a Security Group
@@ -68,6 +71,13 @@ resource "aws_security_group" "app_security_group" {
    protocol    = "tcp"
    cidr_blocks = ["0.0.0.0/0"]
  }
+
+ ingress {
+  from_port   = 3000
+  to_port     = 3000
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+}
 
   tags = {
     Name = var.name
