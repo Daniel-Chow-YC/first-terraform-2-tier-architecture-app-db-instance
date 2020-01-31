@@ -101,4 +101,7 @@ resource "aws_instance" "app_instance" {
 # send template sh file
 data "template_file" "app_init" {
   template = "${file("./scripts/init_script.sh.tpl")}"
+  vars = {
+  db_ip = var.db_instance_ip
+  }
 }

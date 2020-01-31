@@ -26,6 +26,7 @@ resource "aws_internet_gateway" "app_gw" {
 module "app" {
   source = "./modules/app_tier"
   vpc_id = aws_vpc.app_vpc.id
+  db_instance_ip = module.db.db_instance_ip
   name = var.name
   gateway_id = aws_internet_gateway.app_gw.id
   ami_id = var.ami_id

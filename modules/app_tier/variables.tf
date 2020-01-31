@@ -12,3 +12,7 @@ variable "gateway_id" {
 
 variable "ami_id" {
 }
+
+variable "db_instance_ip" {
+  description = "ip of the db instance"
+}
