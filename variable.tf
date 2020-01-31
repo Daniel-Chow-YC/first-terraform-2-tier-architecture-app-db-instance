@@ -10,5 +10,5 @@ variable "ami_id" {
 
 variable "ami_id_mongodb" {
   type = string
-  default = "ami-0c1c20912b942fb91"
+  default = "ami-0983c8db834b7437c"
 }

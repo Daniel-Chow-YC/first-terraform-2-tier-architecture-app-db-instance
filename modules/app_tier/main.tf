@@ -1,13 +1,13 @@
 # Main for App tier
 # Place all that concerns the app tier in here
 
-# create subnet for app
+# create public subnet for app
 resource "aws_subnet" "app_subnet" {
   vpc_id            = var.vpc_id
   cidr_block        = "10.0.0.0/24"
   availability_zone = "eu-west-1a"
   tags = {
-   Name = "${var.name} - private subnet"
+   Name = "${var.name} - public subnet"
   }
 }
 
@@ -54,6 +54,22 @@ resource "aws_security_group" "app_security_group" {
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
 }
+
+ingress {
+ from_port   = 27017
+ to_port     = 27017
+ protocol    = "tcp"
+ cidr_blocks = ["0.0.0.0/0"]
+}
+
+ingress {
+ from_port   = 22
+ to_port     = 22
+ protocol    = "tcp"
+ cidr_blocks = ["0.0.0.0/0"]
+}
+
+
 
   tags = {
     Name = var.name

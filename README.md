@@ -17,3 +17,16 @@ In our stack we have:
 - terraform refresh
 - terraform apply
 - terraform destroy
+
+# 2 tier architecture Nodejs Sample App and Mongodb
+- If the app is already running kill it first so that when you add the environmental variable and you restart the app, the app can take the environmental variable into account
+  - `ps aux | grep node`
+  - `sudo kill <process id number>``
+- add environmental variable on app instance
+  - `export DB_HOST=mongodb://<private ip of mongodb instance>:27017/posts`
+- `cd /home/ubuntu/app`
+- `sudo npm install mongoose ejs express`
+- `npm start`
+
+- `cd seeds`
+- `node seed.js`
