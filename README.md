@@ -1,6 +1,6 @@
 # Terraform 101
 
-This is our first terraform project.
+This is my first terraform project.
 
 Terraform is an orchestration tool, which will deploy AMIs into the cloud.
 
